@@ -1,8 +1,4 @@
-/* ================================
-   CORREÇÃO PARA ESTRUTURA HTML EXISTENTE
-   ================================ */
 
-/* Título principal (que contém "Nossa" e "História") */
 .titulo-principal {
   text-align: center;
   margin-bottom: 60px;
@@ -10,10 +6,9 @@
   font-weight: 900;
   position: relative;
   padding-bottom: 30px;
-  color: #0EA5E9; /* Cor base azul ciano */
+  color: #0EA5E9; 
 }
 
-/* Palavra "Nossa" - azul ciano brilhante */
 .palavra-destaque {
   display: block;
   background: linear-gradient(135deg, 
@@ -34,7 +29,6 @@
   margin-bottom: 10px;
 }
 
-/* Palavra "História" - azul mais escuro */
 .palavra-principal {
   display: block;
   background: linear-gradient(135deg, 
@@ -51,7 +45,6 @@
   letter-spacing: -0.5px;
 }
 
-/* Linha decorativa sob o título */
 .titulo-underline {
   width: 0;
   height: 6px;
@@ -68,7 +61,6 @@
   box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
 }
 
-/* Animações do gradiente */
 @keyframes gradientShift {
   0%, 100% { 
     background-position: 0% 50%; 
@@ -100,9 +92,6 @@
   }
 }
 
-/* ================================
-   BOTÃO VOLTAR MELHORADO
-   ================================ */
 .btn-voltar {
   display: inline-flex;
   align-items: center;
@@ -133,7 +122,6 @@
   min-width: 160px;
 }
 
-/* Efeito de onda no botão */
 .btn-voltar::before {
   content: '';
   position: absolute;
@@ -172,7 +160,7 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Ícone do botão - remover a estrutura div */
+
 .btn-voltar .btn-icon {
   width: 28px;
   height: 28px;
@@ -193,7 +181,7 @@
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-/* SVG do ícone */
+
 .btn-voltar .btn-icon svg {
   color: #FFFFFF;
   transition: all 0.3s ease;
@@ -204,7 +192,7 @@
   transform: scale(1.1);
 }
 
-/* Texto do botão */
+
 .btn-voltar span {
   position: relative;
   z-index: 2;
@@ -212,9 +200,6 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* ================================
-   RESPONSIVIDADE
-   ================================ */
 @media (max-width: 768px) {
   .palavra-destaque {
     font-size: clamp(3rem, 8vw, 4.5rem);
@@ -318,9 +303,6 @@
   }
 }
 
-/* ================================
-   FOTO DA EQUIPE PREMIUM
-   ================================ */
 .sobre-foto {
   flex: 1;
   position: relative;
@@ -414,9 +396,6 @@
   opacity: 1;
 }
 
-/* ================================
-   SEÇÃO DIFERENCIAIS PREMIUM
-   ================================ */
 .diferenciais {
   padding: 120px 60px;
   text-align: center;
@@ -643,9 +622,6 @@
   z-index: 10;
 }
 
-/* ================================
-   CERTIFICAÇÕES PREMIUM
-   ================================ */
 .certificacoes {
   padding: 100px 60px;
   text-align: center;
@@ -768,9 +744,7 @@
   filter: drop-shadow(0 4px 8px rgba(6, 182, 212, 0.3));
 }
 
-/* ================================
-   FOOTER PREMIUM
-   ================================ */
+
 footer.footer {
   background: linear-gradient(135deg, 
     #001122 0%, 
@@ -1020,9 +994,6 @@ footer.footer::before {
   box-shadow: 0 0 15px var(--electric-cyan);
 }
 
-/* ================================
-   BOTÃO WHATSAPP PREMIUM
-   ================================ */
 .whatsapp {
   position: fixed;
   bottom: 30px;
@@ -1081,9 +1052,6 @@ footer.footer::before {
   transform: scale(1.1);
 }
 
-/* ================================
-   RESPONSIVIDADE PREMIUM
-   ================================ */
 @media (max-width: 1024px) {
   .navbar {
     padding: 20px 30px;
@@ -1251,9 +1219,7 @@ footer.footer::before {
   }
 }
 
-/* ================================
-   ANIMAÇÕES AVANÇADAS
-   ================================ */
+
 @keyframes gradientFlow {
   0%, 100% {
     background-position: 0% 50%;
@@ -1284,7 +1250,6 @@ footer.footer::before {
   }
 }
 
-/* Aplicar animações aos elementos */
 .titulo-principal .palavra-destaque {
   background-size: 400% 400%;
   animation: gradientFlow 6s ease-in-out infinite;
@@ -1300,10 +1265,6 @@ footer.footer::before {
 .logo-item:nth-child(3) { animation: float3D 4s ease-in-out infinite 2s; }
 .logo-item:nth-child(4) { animation: float3D 4s ease-in-out infinite 3s; }
 
-
-/* ================================
-   DARK MODE SUPPORT (OPTIONAL)
-   ================================ */
 @media (prefers-color-scheme: dark) {
   :root {
     --crystal-blue: #E2E8F0;
@@ -1324,9 +1285,6 @@ footer.footer::before {
   }
 }
 
-/* ================================
-   PERFORMANCE OPTIMIZATIONS
-   ================================ */
 .diferencial,
 .logo-item,
 .btn-voltar,
@@ -1338,7 +1296,6 @@ footer.footer::before {
   will-change: transform, opacity;
 }
 
-/* Reduzir animações em dispositivos com bateria fraca */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

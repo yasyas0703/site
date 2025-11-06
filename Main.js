@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // === LOADING SCREEN ===
   const loadingScreen = document.getElementById('loadingScreen');
   if (loadingScreen) {
     window.addEventListener('load', () => {
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === MENU MOBILE TOGGLE ===
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.menu');
   
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('menu-open');
     });
 
-    // Fechar menu ao clicar em um link
     const menuLinks = menu.querySelectorAll('a');
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
@@ -34,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === SCROLL ANIMATIONS ===
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -48,11 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  // Observar elementos com classes de animação
   const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale, .fade-in-rotate, .fade-in-bounce, .slide-in-from-bottom, .zoom-in, .flip-in');
   animatedElements.forEach(el => observer.observe(el));
 
-  // === FAQ - Abre/Fecha Perguntas ===
   const faqContainer = document.querySelector('#faq');
   if (faqContainer) {
     faqContainer.addEventListener('click', (e) => {
@@ -64,29 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const isExpanded = btn.getAttribute('aria-expanded') === 'true';
 
       if (!isExpanded) {
-        // abrir
         item.classList.add('active');
         btn.setAttribute('aria-expanded', 'true');
 
-        // Definir a altura máxima dinamicamente
-        answer.style.transition = 'none'; // Remove transição temporariamente
-        answer.style.maxHeight = 'none'; // Libera a altura para o conteúdo total
-        const scrollHeight = answer.scrollHeight; // Obter a altura total do conteúdo
-        answer.style.transition = 'max-height 0.5s ease'; // Reaplica a transição
-        answer.style.maxHeight = `${scrollHeight}px`; // Define a altura final
+        answer.style.transition = 'none'; 
+        answer.style.maxHeight = 'none'; 
+        const scrollHeight = answer.scrollHeight; 
+        answer.style.transition = 'max-height 0.5s ease'; 
+        answer.style.maxHeight = `${scrollHeight}px`; 
       } else {
-        // fechar
         btn.setAttribute('aria-expanded', 'false');
-        answer.style.maxHeight = `${answer.scrollHeight}px`; // Garante altura atual
+        answer.style.maxHeight = `${answer.scrollHeight}px`; 
         requestAnimationFrame(() => {
-          answer.style.maxHeight = '0'; // Diminui para 0
+          answer.style.maxHeight = '0'; 
         });
         item.classList.remove('active');
       }
     });
   }
 
-  // === CONTADORES ANIMADOS ===
   function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-alvo'), 10);
     if (isNaN(target)) {
@@ -122,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(counter => observer.observe(counter));
   })();
 
-  // === ANIMAÇÕES DE SEÇÃO ===
   (function initSectionAnimations() {
     const sections = document.querySelectorAll('.animate-section');
     if (!('IntersectionObserver' in window)) {
@@ -140,13 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
   })();
 
-  // === VALIDAÇÃO DE FORMULÁRIO EM TEMPO REAL ===
   const form = document.getElementById('contactForm');
   if (form) {
     const inputs = form.querySelectorAll('input, textarea, select');
     
     inputs.forEach(input => {
-      // Validação em tempo real
       input.addEventListener('blur', validateField);
       input.addEventListener('input', clearError);
       
@@ -222,12 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     
-    // Envio do formulário
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      // Validar todos os campos
-      let isFormValid = true;
+            let isFormValid = true;
       inputs.forEach(input => {
         if (input.hasAttribute('required') && !validateField.call(input)) {
           isFormValid = false;
@@ -235,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       if (!isFormValid) {
-        // Scroll para o primeiro erro
         const firstError = form.querySelector('.error');
         if (firstError) {
           firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -244,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
-      // Coletar dados do formulário
       const formData = new FormData(form);
       const nome = formData.get('nome');
       const email = formData.get('email');
@@ -252,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const servico = formData.get('servico');
       const mensagem = formData.get('mensagem');
       
-      // Criar mensagem para WhatsApp
       let texto = `Olá! Gostaria de solicitar informações sobre os serviços da Triar Contabilidade.\n\n`;
       texto += `*Nome:* ${nome}\n`;
       texto += `*E-mail:* ${email}\n`;
@@ -266,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(url, '_blank');
         form.reset();
         
-        // Mostrar mensagem de sucesso
         showNotification('Mensagem enviada com sucesso! Você será redirecionado ao WhatsApp.', 'success');
       } catch (error) {
         console.error('Erro ao abrir o WhatsApp:', error);
@@ -275,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // === SISTEMA DE NOTIFICAÇÕES ===
   function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -288,23 +267,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.body.appendChild(notification);
     
-    // Animar entrada
     setTimeout(() => notification.classList.add('show'), 100);
     
-    // Auto-remover após 5 segundos
     setTimeout(() => {
       notification.classList.remove('show');
       setTimeout(() => notification.remove(), 300);
     }, 5000);
     
-    // Botão de fechar
     notification.querySelector('.notification-close').addEventListener('click', () => {
       notification.classList.remove('show');
       setTimeout(() => notification.remove(), 300);
     });
   }
 
-  // === Rolagem suave + foco acessível ===
   const header = document.querySelector('header');
   const headerHeight = header ? header.offsetHeight : 0;
 
@@ -330,7 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // CARROSSEL DE DEPOIMENTOS
   class DepoimentosCarrossel {
     constructor() {
       this.carrossel = document.getElementById('depoimentosCarrossel');
@@ -341,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.currentSlide = 0;
       this.totalSlides = this.cards.length;
       this.autoPlayInterval = null;
-      this.autoPlayDelay = 5000; // 5 segundos
+      this.autoPlayDelay = 5000; 
 
       if (this.carrossel) {
         this.init();
@@ -349,7 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     init() {
-      // Event listeners para botões
       if (this.btnPrev) {
         this.btnPrev.addEventListener('click', () => this.prevSlide());
       }
@@ -357,36 +330,29 @@ document.addEventListener('DOMContentLoaded', () => {
         this.btnNext.addEventListener('click', () => this.nextSlide());
       }
 
-      // Event listeners para indicadores
       this.indicadores.forEach((indicador, index) => {
         indicador.addEventListener('click', () => this.goToSlide(index));
       });
 
-      // Auto-play
       this.startAutoPlay();
 
-      // Pausar auto-play ao passar o mouse
       this.carrossel.addEventListener('mouseenter', () => this.stopAutoPlay());
       this.carrossel.addEventListener('mouseleave', () => this.startAutoPlay());
 
-      // Navegação por teclado
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') this.prevSlide();
         if (e.key === 'ArrowRight') this.nextSlide();
       });
 
-      // Touch/swipe support
       this.addTouchSupport();
     }
 
     goToSlide(index) {
       if (index < 0 || index >= this.totalSlides) return;
 
-      // Remove active class de todos os cards e indicadores
       this.cards.forEach(card => card.classList.remove('active'));
       this.indicadores.forEach(indicador => indicador.classList.remove('active'));
 
-      // Adiciona active class ao card e indicador atual
       this.cards[index].classList.add('active');
       this.indicadores[index].classList.add('active');
 
@@ -445,10 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Inicializar carrossel
   new DepoimentosCarrossel();
 
-  // EFEITOS DE PARALLAX BASEADOS NO SCROLL
   class ParallaxController {
     constructor() {
       this.parallaxElements = document.querySelectorAll('.parallax-section');
@@ -459,12 +423,10 @@ document.addEventListener('DOMContentLoaded', () => {
     init() {
       if (this.parallaxElements.length === 0) return;
 
-      // Throttle scroll events para performance
       window.addEventListener('scroll', this.throttle(() => {
         this.updateParallax();
-      }, 16)); // ~60fps
+      }, 16)); 
 
-      // Initial call
       this.updateParallax();
     }
 
@@ -477,18 +439,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const elementTop = rect.top + scrollTop;
         const elementHeight = rect.height;
         
-        // Calcular se o elemento está visível
         const isVisible = rect.top < windowHeight && rect.bottom > 0;
         
         if (isVisible) {
-          // Calcular offset baseado na posição do scroll
           const scrolled = scrollTop - elementTop;
-          const rate = scrolled * -0.5; // Velocidade do parallax
+          const rate = scrolled * -0.5; 
           
-          // Aplicar transform apenas se o elemento estiver visível
           element.style.transform = `translateY(${rate}px)`;
           
-          // Adicionar efeito de opacidade baseado na proximidade
           const distanceFromCenter = Math.abs(rect.top + rect.height/2 - windowHeight/2);
           const maxDistance = windowHeight;
           const opacity = Math.max(0.3, 1 - (distanceFromCenter / maxDistance));
@@ -512,10 +470,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Inicializar parallax controller
   new ParallaxController();
 
-  // EFEITOS DE PARALLAX PARA ELEMENTOS ESPECÍFICOS
   function initElementParallax() {
     const elements = document.querySelectorAll('.sobre-imagem img, .contato-imagem img');
     
@@ -540,6 +496,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Inicializar efeitos de parallax para elementos
   initElementParallax();
 });

@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobre Nós - Triar Contabilidade</title>
-  <!-- Lucide Icons para ícones modernos -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -26,7 +24,6 @@
 
 
 
-/* NAVBAR MAIS ELEGANTE COM GLASSMORPHISM */
 header {
   width: 90%;
   margin: 20px auto 0 auto;
@@ -143,7 +140,6 @@ header.scrolled {
   box-shadow: 0 10px 30px rgba(0, 184, 230, 0.5);
 }
 
-    /* PARTÍCULAS DE FUNDO */
     .particles {
       position: absolute;
       top: 0;
@@ -213,7 +209,6 @@ header.scrolled {
       }
     }
 
-    /* MAIN CONTENT */
     .sobre-detalhes {
       background: linear-gradient(180deg, #FAFBFF 0%, #F0F9FF 100%);
       position: relative;
@@ -237,7 +232,6 @@ header.scrolled {
       z-index: 2;
     }
 
-    /* TÍTULO WRAPPER - MELHORADO */
     .titulo-wrapper {
       text-align: center;
       margin-bottom: 60px;
@@ -317,7 +311,6 @@ header.scrolled {
       margin-top: 20px;
     }
 
-    /* ANIMAÇÕES */
     @keyframes gradientShift {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -345,7 +338,6 @@ header.scrolled {
       }
     }
 
-    /* CONTEÚDO DE TEXTO - MELHORADO */
     .sobre-texto {
       flex: 1;
       position: relative;
@@ -398,7 +390,6 @@ header.scrolled {
       background-clip: text;
     }
 
-    /* BOTÃO VOLTAR */
     .btn-voltar {
       display: inline-flex;
       align-items: center;
@@ -500,7 +491,6 @@ header.scrolled {
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    /* FOTO */
     .sobre-foto {
       flex: 1;
     }
@@ -528,7 +518,6 @@ header.scrolled {
       background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(34, 211, 238, 0.05));
     }
 
-    /* SEÇÃO DIFERENCIAIS - MELHORADA */
     .diferenciais {
       background: linear-gradient(135deg, #FAFBFF 0%, #F0F9FF 100%);
       padding: 100px 0;
@@ -661,7 +650,6 @@ header.scrolled {
       line-height: 1.7;
     }
 
-    /* SEÇÃO CERTIFICAÇÕES */
     .certificacoes {
       background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
       padding: 100px 0;
@@ -723,7 +711,6 @@ header.scrolled {
     }
 
 
-/* FOOTER - DESIGN MAIS ELABORADO COM WAVE EFFECT */
 footer.footer {
   background: linear-gradient(135deg, #004466, #006680, #008fb3);
   color: #e6f7ff;
@@ -927,13 +914,11 @@ footer.footer::before {
   height: 1px;
   background: linear-gradient(90deg, transparent, #00E5FF, transparent);
 }
-/* ===== RODAPÉ — GRID para manter Localidades + Especialidades lado a lado ===== */
 .footer-container > .footer-col:nth-child(1) { grid-area: logo; }
 .footer-container > .footer-col:nth-child(2) { grid-area: nav; }
 .footer-container > .footer-col:nth-child(3) { grid-area: locais; }
 .footer-container > .footer-col:nth-child(4) { grid-area: espec; }
 
-/* Desktop grande (4 colunas lado a lado) */
 .footer-container {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr 1fr;
@@ -946,7 +931,6 @@ footer.footer::before {
   text-align: left;
 }
 
-/* Tamanho médio (769px até 1100px): mantém locais + espec lado a lado */
 @media (max-width: 1100px) and (min-width: 769px) {
   .footer-container {
     grid-template-columns: 1.2fr 1fr 1fr;
@@ -958,7 +942,6 @@ footer.footer::before {
   }
 }
 
-/* Mobile (até 768px): tudo empilhado e centralizado */
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
@@ -979,7 +962,6 @@ footer.footer::before {
     transform: translateX(-50%);
   }
 }
-    /* BOTÃO WHATSAPP */
     .whatsapp {
       position: fixed;
       bottom: 30px;
@@ -1006,7 +988,6 @@ footer.footer::before {
       height: 32px;
     }
 
-    /* RESPONSIVIDADE */
     @media (max-width: 1024px) {
       .diferenciais-container {
         flex-wrap: wrap;
@@ -1104,13 +1085,11 @@ footer.footer::before {
         max-width: 100px;
       }
 
-      /* ===== RODAPÉ — GRID para manter Localidades + Especialidades lado a lado ===== */
 .footer-container > .footer-col:nth-child(1) { grid-area: logo; }
 .footer-container > .footer-col:nth-child(2) { grid-area: nav; }
 .footer-container > .footer-col:nth-child(3) { grid-area: locais; }
 .footer-container > .footer-col:nth-child(4) { grid-area: espec; }
 
-/* Desktop grande (4 colunas lado a lado) */
 .footer-container {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr 1fr;
@@ -1123,7 +1102,6 @@ footer.footer::before {
   text-align: left;
 }
 
-/* Tamanho médio (769px até 1100px): mantém locais + espec lado a lado */
 @media (max-width: 1100px) and (min-width: 769px) {
   .footer-container {
     grid-template-columns: 1.2fr 1fr 1fr;
@@ -1135,7 +1113,6 @@ footer.footer::before {
   }
 }
 
-/* Mobile (até 768px): tudo empilhado e centralizado */
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
@@ -1157,7 +1134,6 @@ footer.footer::before {
   }
 }
 
-/* ACESSIBILIDADE E MELHORIAS FINAIS */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -1165,7 +1141,6 @@ footer.footer::before {
     transition-duration: 0.01ms !important;
   }
   
-  /* BOTÃO WHATSAPP MAIS MODERNO COM GLOW EFFECT */
 .whatsapp {
   position: fixed;
   bottom: 30px;
@@ -1211,13 +1186,11 @@ footer.footer::before {
   transform: scale(1.1);
 }
 
-/* RESPONSIVIDADE MELHORADA */
 @media (max-width: 1200px) {
   .hero-content h1 {
     font-size: 3.2rem;
   }
 }
-/* BOTÃO WHATSAPP MAIS MODERNO COM GLOW EFFECT */
 .whatsapp {
   position: fixed;
   bottom: 30px;
@@ -1263,7 +1236,6 @@ footer.footer::before {
   transform: scale(1.1);
 }
 
-/* RESPONSIVIDADE MELHORADA */
 @media (max-width: 1200px) {
   .hero-content h1 {
     font-size: 3.2rem;
@@ -1275,8 +1247,7 @@ footer.footer::before {
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <!-- NAVBAR -->
+ 
 <header>
   <nav class="navbar" role="navigation" aria-label="Navegação principal">
     <div class="logo">
@@ -1301,9 +1272,7 @@ footer.footer::before {
 </header>
 
 
-  <!-- TEXTO COMPLETO SOBRE NÓS -->
   <main class="sobre-detalhes">
-    <!-- Partículas de fundo animadas -->
     <div class="particles">
       <div class="particle"></div>
       <div class="particle"></div>
@@ -1313,7 +1282,6 @@ footer.footer::before {
     </div>
     
     <div class="sobre-container">
-      <!-- Texto -->
       <div class="sobre-texto">
         <div class="titulo-wrapper">
           <div class="titulo-decoracao"></div>
@@ -1364,7 +1332,6 @@ footer.footer::before {
         </a>
       </div>
 
-      <!-- Foto da equipe -->
       <div class="sobre-foto">
         <div class="foto-frame">
           <img src="Imagens/equipe.png" alt="Foto da equipe Triar Contabilidade" />
@@ -1374,7 +1341,6 @@ footer.footer::before {
     </div>
   </main>
 
-  <!-- SEÇÃO DIFERENCIAIS -->
   <section class="diferenciais">
     <div class="titulo-section">
       <div class="titulo-ornamento-top">
@@ -1450,7 +1416,6 @@ footer.footer::before {
     </div>
   </section>
 
-  <!-- SEÇÃO CERTIFICAÇÕES & PARCEIROS -->
   <section class="certificacoes">
     <div class="titulo-section">
       <h2 class="titulo-certificacoes">
@@ -1481,7 +1446,6 @@ footer.footer::before {
   
 <footer class="footer" role="contentinfo">
   <div class="footer-container">
-    <!-- COLUNA 1: Logo e Contato -->
     <div class="footer-col">
       <img src="Imagens/logo.png" alt="Triar Contabilidade" class="footer-logo" loading="lazy" />
       <p>Temos como propósito auxiliar nossos clientes a alcançar seus objetivos, oferecendo soluções contábeis seguras e eficazes</p>
@@ -1513,7 +1477,6 @@ footer.footer::before {
       </div>
     </div>
 
-    <!-- COLUNA 2: Navegação -->
     <div class="footer-col">
       <h3>Navegação</h3>
       <ul>
@@ -1525,7 +1488,6 @@ footer.footer::before {
       </ul>
     </div>
 
-    <!-- COLUNA 3: Localidades -->
     <div class="footer-col">
       <h3>Localidades</h3>
       <p><strong>Ouro Fino</strong><br>
@@ -1538,7 +1500,6 @@ footer.footer::before {
       </p>
     </div>
 
-    <!-- COLUNA 4: Especialidades -->
     <div class="footer-col">
       <h3>Especialidades</h3>
       <ul>
@@ -1551,19 +1512,16 @@ footer.footer::before {
     </div>
   </div>
 
-  <!-- RODAPÉ INFERIOR -->
   <div class="footer-bottom">
     <p>© 2025 Triar Contabilidade - Todos os direitos reservados</p>
   </div>
 </footer>
 
-<!-- BOTÃO WHATSAPP -->
 <a href="https://wa.me/553536361407" class="whatsapp" target="_blank" aria-label="Fale conosco pelo WhatsApp" title="Fale conosco pelo WhatsApp">
   <img src="Imagens/WhatsApp.webp" alt="Ícone do WhatsApp" loading="lazy" />
 </a>
 
 <script>
-  // Inicializar ícones Lucide (caso necessário)
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
