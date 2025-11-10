@@ -709,284 +709,361 @@ header.scrolled {
     .logo-item:hover .logo-shine {
       left: 100%;
     }
-
-
-footer.footer {
-  background: linear-gradient(135deg, #004466, #006680, #008fb3);
-  color: #e6f7ff;
-  padding: 80px 0 40px 0;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  margin-left: -50vw;
-  border-radius: 0;
-  overflow: hidden;
-}
-
-footer.footer::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.720-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v2c-10.271 0-15.362-1.222-24.629-4.928C65.888 7.278 60.562 6 50 6 39.374 6 33.145 7.397 23.34 11.063l-1.767.662C13.223 15.6 8.163 16.9 0 16.9v-2.9z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E") repeat-x;
-  animation: wave 20s linear infinite;
-}
-
-@keyframes wave {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100px);
-  }
-}
-
-.footer-container {
-  padding: 0 50px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-col {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-logo {
-  max-width: 240px;
-  margin-bottom: 25px;
-  filter: brightness(0) invert(1);
-  transition: all 0.4s ease;
-}
-
-.footer-logo:hover {
-  transform: scale(1.05);
-  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-}
-
-.footer-col h3 {
-  color: #00E5FF;
-  margin-bottom: 25px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  position: relative;
-  padding-bottom: 15px;
-}
-
-.footer-col h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #00E5FF, #0EA5E9);
-  border-radius: 3px;
-  animation: expandLine 1s ease-out 0.5s forwards;
-}
-
-@keyframes expandLine {
-  to {
-    width: 60px;
-  }
-}
-
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-col ul li {
-  margin-bottom: 15px;
-  position: relative;
-}
-
-.footer-col ul li::before {
-  content: '▸';
-  position: absolute;
-  left: -15px;
-  color: #00E5FF;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.footer-col ul li:hover::before {
-  opacity: 1;
-  left: -20px;
-}
-
-.footer-col ul li a {
-  color: #ccefff;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  display: inline-block;
-  padding: 5px 0;
-  position: relative;
-}
-
-.footer-col ul li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #00E5FF;
-  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.footer-col ul li a:hover::after {
-  width: 100%;
-}
-
-.footer-col ul li a:hover {
-  color: #00E5FF;
-  transform: translateX(8px);
-}
-
-.footer-contato p {
+/* BOTÃO WHATSAPP FLUTUANTE */
+.whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
   display: flex;
   align-items: center;
-  gap: 15px;
-  color: #ccefff;
-  margin-bottom: 20px;
-  padding: 10px 0;
+  justify-content: center;
+  background: linear-gradient(45deg, #25D366, #20b358);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: pulseGlow 2s infinite;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp img { 
+  width: 70%; 
+  height: 70%;
   transition: all 0.3s ease;
 }
 
-.footer-contato p:hover {
-  color: #ffffff;
-  transform: translateX(5px);
+.whatsapp:hover img {
+  transform: scale(1.1);
 }
 
-.footer-contato a {
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-.footer-contato a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #00E5FF;
-  transition: width 0.4s ease;
-}
-
-.footer-contato a:hover::after {
-  width: 100%;
-}
-
-.footer-contato a:hover {
-  color: #00E5FF;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 60px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 1rem;
-  color: #99d6ea;
-  width: 100%;
-  position: relative;
-}
-
-.footer-bottom::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00E5FF, transparent);
-}
-.footer-container > .footer-col:nth-child(1) { grid-area: logo; }
-.footer-container > .footer-col:nth-child(2) { grid-area: nav; }
-.footer-container > .footer-col:nth-child(3) { grid-area: locais; }
-.footer-container > .footer-col:nth-child(4) { grid-area: espec; }
-
-.footer-container {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr;
-  grid-template-areas: "logo nav locais espec";
-  gap: 60px;
-  align-items: start;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 50px;
-  text-align: left;
-}
-
-@media (max-width: 1100px) and (min-width: 769px) {
-  .footer-container {
-    grid-template-columns: 1.2fr 1fr 1fr;
-    grid-template-areas:
-      "logo locais espec"
-      "logo nav    nav";
-    gap: 40px;
-    padding: 0 30px;
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
 
-@media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "logo"
-      "nav"
-      "locais"
-      "espec";
-    gap: 40px;
-    padding: 0 30px;
-    text-align: center;
+  .whatsapp {
+    width: 65px;
+    height: 65px;
+    bottom: 25px;
+    right: 25px;
   }
+ footer.footer {
+      background: linear-gradient(135deg, #004466, #006680, #008fb3);
+      color: #e6f7ff;
+      padding: 80px 0 40px 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      border-radius: 0;
+      overflow: hidden;
+    }
 
-  .footer-col { min-width: 100%; }
+    footer.footer::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v2c-10.271 0-15.362-1.222-24.629-4.928C65.888 7.278 60.562 6 50 6 39.374 6 33.145 7.397 23.34 11.063l-1.767.662C13.223 15.6 8.163 16.9 0 16.9v-2.9z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E") repeat-x;
+      animation: wave 20s linear infinite;
+    }
 
-  .footer-col h3::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-    .whatsapp {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100px); }
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      grid-template-areas: "logo nav locais espec";
+      gap: 60px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 50px;
+      text-align: left;
+    }
+
+    .footer-container > .footer-col:nth-child(1) { grid-area: logo; }
+    .footer-container > .footer-col:nth-child(2) { grid-area: nav; }
+    .footer-container > .footer-col:nth-child(3) { grid-area: locais; }
+    .footer-container > .footer-col:nth-child(4) { grid-area: espec; }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-logo {
+      max-width: 240px;
+      margin-bottom: 25px;
+      filter: brightness(0) invert(1);
+      transition: all 0.4s ease;
+    }
+
+    .footer-logo:hover {
+      transform: scale(1.05);
+      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    }
+
+    .footer-col h3 {
+      color: #00E5FF;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
       width: 60px;
-      height: 60px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
+      height: 3px;
+      background: linear-gradient(90deg, #00E5FF, #0EA5E9);
+      border-radius: 3px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .footer-col ul li::before {
+      content: '▸';
+      position: absolute;
+      left: -15px;
+      color: #00E5FF;
+      opacity: 0;
       transition: all 0.3s ease;
     }
 
-    .whatsapp:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+    .footer-col ul li:hover::before {
+      opacity: 1;
+      left: -20px;
     }
 
-    .whatsapp img {
-      width: 32px;
-      height: 32px;
+    .footer-col ul li a {
+      color: #ccefff;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: inline-block;
+      padding: 5px 0;
+      position: relative;
     }
+
+    .footer-col ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #00E5FF;
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .footer-col ul li a:hover::after {
+      width: 100%;
+    }
+
+    .footer-col ul li a:hover {
+      color: #00E5FF;
+      transform: translateX(8px);
+    }
+
+    /* ESTILOS DE CONTATO - CORRIGIDOS */
+    .footer-contato p {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #ccefff;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* TAMANHO FIXO DOS ÍCONES SVG */
+    .footer-contato p svg {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+      flex-shrink: 0;
+      fill: #00b8e6;
+    }
+
+    .footer-contato p:hover {
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+
+    .footer-contato a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .footer-contato a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #00E5FF;
+      transition: width 0.4s ease;
+    }
+
+    .footer-contato a:hover::after {
+      width: 100%;
+    }
+
+    .footer-contato a:hover {
+      color: #00E5FF;
+    }
+
+    /* SOCIAL MEDIA - CORRIGIDO */
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 184, 230, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      outline: none;
+      border: none;
+      position: relative;
+    }
+
+    .footer-social a::before,
+    .footer-social a::after {
+      display: none;
+    }
+
+    .footer-social a:hover {
+      background: rgba(0, 184, 230, 0.2);
+      transform: scale(1.1);
+    }
+
+    .footer-social a svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .footer-social a:focus {
+      outline: 2px solid #00b8e6;
+      outline-offset: 2px;
+    }
+
+    .footer-social a:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1rem;
+      color: #99d6ea;
+      width: 100%;
+      position: relative;
+    }
+
+    .footer-bottom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00E5FF, transparent);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1100px) and (min-width: 769px) {
+      .footer-container {
+        grid-template-columns: 1.2fr 1fr 1fr;
+        grid-template-areas:
+          "logo locais espec"
+          "logo nav    nav";
+        gap: 40px;
+        padding: 0 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "logo"
+          "nav"
+          "locais"
+          "espec";
+        gap: 40px;
+        padding: 0 30px;
+        text-align: center;
+      }
+
+      .footer-col { min-width: 100%; }
+
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+
+
 
     @media (max-width: 1024px) {
       .diferenciais-container {
@@ -1141,23 +1218,6 @@ footer.footer::before {
     transition-duration: 0.01ms !important;
   }
   
-.whatsapp {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(45deg, #25D366, #20b358);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation: pulseGlow 2s infinite;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-}
 
 @keyframes pulseGlow {
   0% {
@@ -1171,43 +1231,13 @@ footer.footer::before {
   }
 }
 
-.whatsapp:hover {
-  transform: scale(1.15) rotate(10deg);
-  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
-}
 
-.whatsapp img { 
-  width: 70%; 
-  height: 70%;
-  transition: all 0.3s ease;
-}
-
-.whatsapp:hover img {
-  transform: scale(1.1);
-}
 
 @media (max-width: 1200px) {
   .hero-content h1 {
     font-size: 3.2rem;
   }
 }
-.whatsapp {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(45deg, #25D366, #20b358);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation: pulseGlow 2s infinite;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-}
 
 @keyframes pulseGlow {
   0% {
@@ -1221,20 +1251,7 @@ footer.footer::before {
   }
 }
 
-.whatsapp:hover {
-  transform: scale(1.15) rotate(10deg);
-  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
-}
 
-.whatsapp img { 
-  width: 70%; 
-  height: 70%;
-  transition: all 0.3s ease;
-}
-
-.whatsapp:hover img {
-  transform: scale(1.1);
-}
 
 @media (max-width: 1200px) {
   .hero-content h1 {
@@ -1262,6 +1279,7 @@ footer.footer::before {
       <li><a href="index.html#home" aria-current="page">Home</a></li>
       <li><a href="sobre.html">Sobre</a></li> <!-- 🔹 Vai para outra página -->
       <li><a href="index.html#servicos">Serviços</a></li>
+           <li><a href="blog.html">Blog</a></li> 
       <li><a href="index.html#faq">FAQ</a></li>
       <li><a href="index.html#contato">Contato</a></li>
     </ul>
@@ -1444,87 +1462,91 @@ footer.footer::before {
   </section>
 
   
-<footer class="footer" role="contentinfo">
-  <div class="footer-container">
-    <div class="footer-col">
-      <img src="Imagens/logo.png" alt="Triar Contabilidade" class="footer-logo" loading="lazy" />
-      <p>Temos como propósito auxiliar nossos clientes a alcançar seus objetivos, oferecendo soluções contábeis seguras e eficazes</p>
-      <div class="footer-contato">
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67 A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27 a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <a href="tel:+553536361407" aria-label="Ligar para (35) 3636-1407">(35) 3636-1407</a>
+<!-- FOOTER (mesmo do index.html) -->
+ <!-- 11. RODAPÉ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-col">
+        <img src="Imagens/logo.png" alt="Triar Contabilidade" class="footer-logo" loading="lazy" />
+        <p>Temos como propósito auxiliar nossos clientes a alcançar seus objetivos, oferecendo soluções contábeis seguras e eficazes</p>
+        <div class="footer-contato">
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67 A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27 a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+553536361407" aria-label="Ligar para (35) 3636-1407">(35) 3636-1407</a>
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
+              <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+            </svg>
+            <a href="mailto:triar@triarcontabilidade.com.br" aria-label="Enviar e-mail para Triar Contabilidade">triar@triarcontabilidade.com.br</a>
+          </p>
+        </div>
+        <div class="footer-social">
+          <a href="https://facebook.com/triarcontabilidade" target="_blank" aria-label="Siga-nos no Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
+              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com/triarcontabilidade" target="_blank" aria-label="Siga-nos no Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.948-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="#home" aria-label="Página inicial">Home</a></li>
+          <li><a href="#sobre" aria-label="Sobre a Triar Contabilidade">Sobre Nós</a></li>
+          <li><a href="#servicos" aria-label="Nossos serviços">Serviços</a></li>
+              <li><a href="blog.html" aria-label="Blog com artigos">Blog</a></li>
+          <li><a href="#faq" aria-label="Perguntas frequentes">FAQ</a></li>
+          <li><a href="#contato" aria-label="Informações de contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Localidades</h3>
+        <p><strong>Ouro Fino</strong><br>
+          Guarda Mor Lusrosa, 560<br>
+          Centro - CEP 37570-000
         </p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
-            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
-          </svg>
-          <a href="mailto:triar@triarcontabilidade.com.br" aria-label="Enviar e-mail para Triar Contabilidade">triar@triarcontabilidade.com.br</a>
+        <p><strong>Jacutinga</strong><br>
+          Rua Santo Antônio, 331<br>
+          Centro - CEP 37590-000
         </p>
       </div>
-      <div class="footer-social">
-        <a href="https://facebook.com/triarcontabilidade" target="_blank" aria-label="Siga-nos no Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
-            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-          </svg>
-        </a>
-        <a href="https://instagram.com/triarcontabilidade" target="_blank" aria-label="Siga-nos no Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00b8e6" viewBox="0 0 24 24">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.948-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </a>
+
+      <div class="footer-col">
+        <h3>Especialidades</h3>
+        <ul>
+          <li><a href="#servicos" aria-label="Legalização empresarial">» Legalização empresarial</a></li>
+          <li><a href="#servicos" aria-label="Emissão e renovação">» Emissão e renovação</a></li>
+          <li><a href="#servicos" aria-label="Controle e organização">» Controle e organização</a></li>
+          <li><a href="#servicos" aria-label="Regime Especial MG">» Regime Especial MG</a></li>
+          <li><a href="#servicos" aria-label="Lucro Real">» Lucro Real</a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="footer-col">
-      <h3>Navegação</h3>
-      <ul>
-        <li><a href="index.html#home" aria-label="Página inicial">Home</a></li>
-        <li><a href="index.html#sobre" aria-label="Sobre a Triar Contabilidade">Sobre Nós</a></li>
-        <li><a href="index.html#servicos" aria-label="Nossos serviços">Serviços</a></li>
-        <li><a href="index.html#faq" aria-label="Perguntas frequentes">Perguntas Frequentes</a></li>
-        <li><a href="index.html#contato" aria-label="Informações de contato">Contato</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>© 2025 Triar Contabilidade - Todos os direitos reservados</p>
     </div>
+  </footer>
 
-    <div class="footer-col">
-      <h3>Localidades</h3>
-      <p><strong>Ouro Fino</strong><br>
-        Guarda Mor Lusrosa, 560<br>
-        Centro - CEP 37570-000
-      </p>
-      <p><strong>Jacutinga</strong><br>
-        Rua Santo Antônio, 331<br>
-        Centro - CEP 37590-000
-      </p>
-    </div>
 
-    <div class="footer-col">
-      <h3>Especialidades</h3>
-      <ul>
-        <li><a href="index.html#servicos" aria-label="Legalização empresarial">» Legalização empresarial</a></li>
-        <li><a href="index.html#servicos" aria-label="Emissão e renovação">» Emissão e renovação</a></li>
-        <li><a href="index.html#servicos" aria-label="Controle e organização">» Controle e organização</a></li>
-        <li><a href="index.html#servicos" aria-label="Regime Especial MG">» Regime Especial MG</a></li>
-        <li><a href="index.html#servicos" aria-label="Lucro Real">» Lucro Real</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 Triar Contabilidade - Todos os direitos reservados</p>
-  </div>
-</footer>
-
-<a href="https://wa.me/553536361407" class="whatsapp" target="_blank" aria-label="Fale conosco pelo WhatsApp" title="Fale conosco pelo WhatsApp">
-  <img src="Imagens/WhatsApp.webp" alt="Ícone do WhatsApp" loading="lazy" />
-</a>
-
+  <a href="https://wa.me/553536361407" class="whatsapp" target="_blank" aria-label="Fale conosco pelo WhatsApp" title="Fale conosco pelo WhatsApp">
+    <img src="Imagens/WhatsApp.webp" alt="Ícone do WhatsApp" loading="lazy" />
+  </a>
 <script>
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
 </script>
+
 </body>
 </html>

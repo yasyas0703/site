@@ -1,14 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const loadingScreen = document.getElementById('loadingScreen');
   if (loadingScreen) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-          loadingScreen.style.display = 'none';
-        }, 800);
-      }, 1500);
-    });
+
   }
 
   const menuToggle = document.querySelector('.menu-toggle');
@@ -46,6 +39,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale, .fade-in-rotate, .fade-in-bounce, .slide-in-from-bottom, .zoom-in, .flip-in');
   animatedElements.forEach(el => observer.observe(el));
+
+  // ===== ANIMAÇÕES AO SCROLL (OPCIONAL) =====
+  // Observador específico para cards de serviço e seção CTA.
+  // Usa as mesmas opções definidas acima (observerOptions) para consistência.
+  if ('IntersectionObserver' in window) {
+    const serviceObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+      // estado inicial (caso CSS não defina)
+      if (!card.style.opacity) card.style.opacity = '0';
+      if (!card.style.transform) card.style.transform = 'translateY(20px)';
+      serviceObserver.observe(card);
+    });
+
+    const ctaSection = document.querySelector('.cta-section');
+    if (ctaSection) {
+      if (!ctaSection.style.opacity) ctaSection.style.opacity = '0';
+      if (!ctaSection.style.transform) ctaSection.style.transform = 'translateY(20px)';
+      serviceObserver.observe(ctaSection);
+    }
+
+    // ===== ANIMAÇÃO DE HOVER NOS CARDS =====
+    serviceCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // ===== CONTADOR DE ANIMAÇÃO (OPCIONAL) =====
+    // Adiciona um delay progressivo para cada card
+    serviceCards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+    });
+  }
 
   const faqContainer = document.querySelector('#faq');
   if (faqContainer) {
@@ -413,88 +453,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new DepoimentosCarrossel();
 
-  class ParallaxController {
-    constructor() {
-      this.parallaxElements = document.querySelectorAll('.parallax-section');
-      this.isScrolling = false;
-      this.init();
-    }
 
-    init() {
-      if (this.parallaxElements.length === 0) return;
 
-      window.addEventListener('scroll', this.throttle(() => {
-        this.updateParallax();
-      }, 16)); 
-
-      this.updateParallax();
-    }
-
-    updateParallax() {
-      const scrollTop = window.pageYOffset;
-      const windowHeight = window.innerHeight;
-
-      this.parallaxElements.forEach((element, index) => {
-        const rect = element.getBoundingClientRect();
-        const elementTop = rect.top + scrollTop;
-        const elementHeight = rect.height;
-        
-        const isVisible = rect.top < windowHeight && rect.bottom > 0;
-        
-        if (isVisible) {
-          const scrolled = scrollTop - elementTop;
-          const rate = scrolled * -0.5; 
-          
-          element.style.transform = `translateY(${rate}px)`;
-          
-          const distanceFromCenter = Math.abs(rect.top + rect.height/2 - windowHeight/2);
-          const maxDistance = windowHeight;
-          const opacity = Math.max(0.3, 1 - (distanceFromCenter / maxDistance));
-          
-          element.style.opacity = opacity;
-        }
-      });
-    }
-
-    throttle(func, limit) {
-      let inThrottle;
-      return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-          func.apply(context, args);
-          inThrottle = true;
-          setTimeout(() => inThrottle = false, limit);
-        }
-      };
-    }
-  }
-
-  new ParallaxController();
-
-  function initElementParallax() {
-    const elements = document.querySelectorAll('.sobre-imagem img, .contato-imagem img');
-    
-    elements.forEach(element => {
-      element.addEventListener('mousemove', (e) => {
-        const rect = element.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-      });
-      
-      element.addEventListener('mouseleave', () => {
-        element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-      });
-    });
-  }
 
   initElementParallax();
+  // ===== Modal de Serviços (abre com os botões "Saiba mais") =====
+  (function initServiceModal() {
+    function buildModal() {
+      const modal = document.createElement('div');
+      modal.className = 'modal-servico';
+      modal.style.display = 'none';
+      modal.innerHTML = `
+        <div class="modal-wrapper" role="dialog" aria-modal="true" aria-label="Detalhes do serviço">
+          <button class="modal-close" aria-label="Fechar">&times;</button>
+          <div class="modal-content">
+            <h3 class="modal-title"></h3>
+            <div class="modal-grid">
+              <div class="modal-body"></div>
+              <aside class="modal-aside"><h4>Benefícios</h4><ul class="modal-list"></ul></aside>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      return modal;
+    }
+
+    let modal = null;
+
+    function openModal(data) {
+      if (!modal) modal = buildModal();
+      modal.querySelector('.modal-title').textContent = data.title || '';
+      modal.querySelector('.modal-body').innerHTML = `<p>${data.description || ''}</p>`;
+      const list = modal.querySelector('.modal-list');
+      list.innerHTML = '';
+      (data.benefits || []).forEach(b => {
+        const li = document.createElement('li');
+        li.textContent = b;
+        list.appendChild(li);
+      });
+      modal.style.display = 'flex';
+
+      function onOverlayClick(e) { if (e.target === modal) closeModal(); }
+      function onKeyDown(e) { if (e.key === 'Escape') closeModal(); }
+
+      modal.addEventListener('click', onOverlayClick);
+      modal.querySelector('.modal-close').addEventListener('click', closeModal);
+      document.addEventListener('keydown', onKeyDown);
+
+      // store handlers for removal
+      modal._onOverlayClick = onOverlayClick;
+      modal._onKeyDown = onKeyDown;
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.style.display = 'none';
+      if (modal._onOverlayClick) modal.removeEventListener('click', modal._onOverlayClick);
+      const closeBtn = modal.querySelector('.modal-close');
+      if (closeBtn) closeBtn.removeEventListener('click', closeModal);
+      if (modal._onKeyDown) document.removeEventListener('keydown', modal._onKeyDown);
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-service-modern');
+      if (!btn) return;
+      e.preventDefault();
+      const card = btn.closest('.service-card-modern');
+      if (!card) return;
+      const title = card.querySelector('.service-title-modern')?.textContent || '';
+      const description = card.querySelector('.service-description-modern')?.textContent || '';
+      const benefits = Array.from(card.querySelectorAll('.benefits-list-modern li')).map(li => li.textContent.trim());
+      openModal({ title, description, benefits });
+    });
+  })();
+
 });
