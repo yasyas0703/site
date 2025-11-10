@@ -16,6 +16,9 @@
   <link rel="icon" type="image/png" href="Imagens/favicon.png" />
   <link rel="preload" href="videos/video.mp4" as="video" type="video/mp4" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Adicione no <head> -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -44,6 +47,7 @@
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="blog.html">Blog</a></li> 
+             <li><a href="know-how.html">Know-how</a></li> 
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contato">Contato</a></li>
 
@@ -277,6 +281,9 @@
   </div>
 </section>
   </div>
+
+
+  
 </section>
 
   <div class="cta-section-modern">
@@ -292,6 +299,384 @@
       </svg>
     </a>
   </div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  
+
+
+<section class="calculator-wrapper">
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="icon-wrapper">
+
+      </div>
+      <h2 class="title">Calculadora de Regime Tributário</h2>
+      <p class="subtitle">Descubra qual regime tributário é mais vantajoso para seu negócio em 3 passos simples</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+      <div class="progress-bar">
+        <div class="progress-step">
+          <div class="step-circle active" data-step="1">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle" data-step="2">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle" data-step="3">3</div>
+        </div>
+      </div>
+      <div class="progress-labels">
+        <span>Dados Básicos</span>
+        <span>Detalhes</span>
+        <span>Confirmação</span>
+      </div>
+    </div>
+
+    <!-- Card Principal -->
+    <div class="main-card">
+      <!-- Step 1: Dados Básicos -->
+      <div class="step-content active" id="step1">
+        <h3 class="step-title">Informações Básicas</h3>
+        
+        <div class="form-group">
+          <label class="form-label">Faturamento Anual Previsto (R$) *</label>
+          <input type="number" id="faturamento" class="form-input" placeholder="Ex: 1200000">
+          <p class="form-hint">💡 Informe o valor anual esperado</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Número de Funcionários</label>
+          <input type="number" id="funcionarios" class="form-input" placeholder="Ex: 10">
+        </div>
+
+        <button class="btn btn-primary" onclick="nextStep(2)">
+          Próximo Passo
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Step 2: Detalhes -->
+      <div class="step-content" id="step2">
+        <h3 class="step-title">Detalhes do Negócio</h3>
+        
+        <div class="form-group">
+          <label class="form-label">Setor de Atuação *</label>
+          <select id="setor" class="form-input">
+            <option value="">Selecione...</option>
+            <option value="comercio">Comércio</option>
+            <option value="industria">Indústria</option>
+            <option value="servicos">Serviços</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Margem de Lucro Estimada (%)</label>
+          <input type="number" id="margem" class="form-input" placeholder="Ex: 8">
+          <p class="form-hint">💡 Média: 8% a 32%</p>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="importacao" class="checkbox-input">
+          <label for="importacao" class="checkbox-label">
+            Realiza operações de importação/exportação
+          </label>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="prevStep(1)">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="19" y1="12" x2="5" y2="12"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Voltar
+          </button>
+          <button class="btn btn-primary" onclick="nextStep(3)">
+            Próximo Passo
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Confirmação -->
+      <div class="step-content" id="step3">
+        <h3 class="step-title">✅ Confirme os Dados</h3>
+        
+        <div class="summary-box">
+          <div class="summary-item">
+            <span class="summary-label">Faturamento Anual:</span>
+            <span class="summary-value" id="confirm-faturamento">-</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Funcionários:</span>
+            <span class="summary-value" id="confirm-funcionarios">-</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Setor:</span>
+            <span class="summary-value" id="confirm-setor">-</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Margem de Lucro:</span>
+            <span class="summary-value" id="confirm-margem">-</span>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="prevStep(2)">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="19" y1="12" x2="5" y2="12"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Voltar
+          </button>
+          <button class="btn btn-success" onclick="calcularRegime()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <line x1="8" y1="6" x2="16" y2="6"/>
+            </svg>
+            Calcular Regime
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Resultado -->
+      <div class="step-content" id="step4">
+        <div class="result-header">
+          <div class="result-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <h3 class="result-title">Regime Recomendado</h3>
+        </div>
+
+        <div class="result-box">
+          <div class="result-content">
+            <p class="result-subtitle">Melhor opção para seu negócio:</p>
+            <h4 class="result-regime" id="resultado-regime">-</h4>
+            <div class="result-stats">
+              <div class="stat-item">
+                <p class="stat-label">Alíquota Estimada</p>
+                <p class="stat-value" id="resultado-aliquota">-</p>
+              </div>
+              <div class="stat-item" id="economia-container" style="display: none;">
+                <p class="stat-label">Economia Anual</p>
+                <p class="stat-value" id="resultado-economia">-</p>
+              </div>
+            </div>
+            <p class="result-explanation" id="resultado-explicacao">-</p>
+          </div>
+        </div>
+
+        <div class="alert-box">
+          <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <div class="alert-content">
+            <h5 class="alert-title">⚠️ Atenção</h5>
+            <p class="alert-text">
+              Esta é uma simulação estimada. Para um planejamento tributário completo e preciso, 
+              recomendamos uma análise detalhada com nossos especialistas.
+            </p>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="resetCalculadora()">
+            Nova Simulação
+          </button>
+          <a href="https://wa.me/553536361407?text=Olá! Fiz uma simulação e gostaria de falar com um especialista" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn btn-success">
+            Falar com Especialista
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+
+  <script>
+    let currentStep = 1;
+    const formData = {
+      faturamento: '',
+      funcionarios: '',
+      setor: '',
+      margem: '',
+      importacao: false
+    };
+
+    function updateProgressBar(step) {
+      document.querySelectorAll('.step-circle').forEach((circle, index) => {
+        if (index + 1 <= step) {
+          circle.classList.add('active');
+        } else {
+          circle.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.step-line').forEach((line, index) => {
+        if (index + 1 < step) {
+          line.classList.add('active');
+        } else {
+          line.classList.remove('active');
+        }
+      });
+    }
+
+    function nextStep(step) {
+      if (step === 2) {
+        const faturamento = document.getElementById('faturamento').value;
+        if (!faturamento) {
+          alert('Por favor, preencha o faturamento anual');
+          return;
+        }
+        formData.faturamento = faturamento;
+        formData.funcionarios = document.getElementById('funcionarios').value;
+      }
+
+      if (step === 3) {
+        const setor = document.getElementById('setor').value;
+        if (!setor) {
+          alert('Por favor, selecione o setor de atuação');
+          return;
+        }
+        formData.setor = setor;
+        formData.margem = document.getElementById('margem').value || '8';
+        formData.importacao = document.getElementById('importacao').checked;
+        
+        updateConfirmation();
+      }
+
+      document.querySelectorAll('.step-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById('step' + step).classList.add('active');
+      
+      currentStep = step;
+      updateProgressBar(step);
+    }
+
+    function prevStep(step) {
+      document.querySelectorAll('.step-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById('step' + step).classList.add('active');
+      
+      currentStep = step;
+      updateProgressBar(step);
+    }
+
+    function updateConfirmation() {
+      document.getElementById('confirm-faturamento').textContent = 
+        'R$ ' + parseFloat(formData.faturamento).toLocaleString('pt-BR');
+      document.getElementById('confirm-funcionarios').textContent = 
+        formData.funcionarios || 'Não informado';
+      document.getElementById('confirm-setor').textContent = 
+        formData.setor.charAt(0).toUpperCase() + formData.setor.slice(1);
+      document.getElementById('confirm-margem').textContent = 
+        (formData.margem || '8') + '%';
+    }
+
+    function calcularRegime() {
+      const faturamento = parseFloat(formData.faturamento);
+      const margem = parseFloat(formData.margem) || 8;
+      
+      let resultado = {
+        regime: '',
+        economia: 0,
+        aliquota: 0,
+        explicacao: ''
+      };
+
+      if (faturamento <= 4800000) {
+        const aliquotaSimples = formData.setor === 'comercio' ? 4.5 : 
+                                formData.setor === 'industria' ? 7.3 : 6;
+        const impostoSimples = (faturamento * aliquotaSimples) / 100;
+        
+        const aliquotaPresumido = 13.33;
+        const impostoPresumido = (faturamento * aliquotaPresumido) / 100;
+        
+        if (impostoSimples < impostoPresumido) {
+          resultado = {
+            regime: 'Simples Nacional',
+            economia: impostoPresumido - impostoSimples,
+            aliquota: aliquotaSimples,
+            explicacao: 'Para seu faturamento, o Simples Nacional oferece a menor carga tributária.'
+          };
+        } else {
+          resultado = {
+            regime: 'Lucro Presumido',
+            economia: impostoSimples - impostoPresumido,
+            aliquota: aliquotaPresumido,
+            explicacao: 'Com sua margem de lucro, o Lucro Presumido é mais vantajoso.'
+          };
+        }
+      } else if (faturamento <= 78000000) {
+        resultado = {
+          regime: 'Lucro Presumido',
+          economia: 0,
+          aliquota: 13.33,
+          explicacao: 'Seu faturamento ultrapassa o limite do Simples Nacional.'
+        };
+      } else {
+        resultado = {
+          regime: 'Lucro Real',
+          economia: 0,
+          aliquota: 'Variável',
+          explicacao: 'Empresas com faturamento acima de R$ 78 milhões devem optar pelo Lucro Real.'
+        };
+      }
+
+      document.getElementById('resultado-regime').textContent = resultado.regime;
+      document.getElementById('resultado-aliquota').textContent = resultado.aliquota + '%';
+      document.getElementById('resultado-explicacao').textContent = resultado.explicacao;
+      
+      if (resultado.economia > 0) {
+        document.getElementById('economia-container').style.display = 'block';
+        document.getElementById('resultado-economia').textContent = 
+          'R$ ' + Math.round(resultado.economia).toLocaleString('pt-BR');
+      } else {
+        document.getElementById('economia-container').style.display = 'none';
+      }
+
+      nextStep(4);
+    }
+
+    function resetCalculadora() {
+      formData.faturamento = '';
+      formData.funcionarios = '';
+      formData.setor = '';
+      formData.margem = '';
+      formData.importacao = false;
+      
+      document.getElementById('faturamento').value = '';
+      document.getElementById('funcionarios').value = '';
+      document.getElementById('setor').value = '';
+      document.getElementById('margem').value = '';
+      document.getElementById('importacao').checked = false;
+      
+      nextStep(1);
+    }
+  </script>
+</section>
 
     <!-- 4. BENEFÍCIOS / DESTAQUES RÁPIDOS (números) -->
     <section id="sobre" class="sobre-nos card fade-in-up parallax-section" role="region" aria-label="Sobre a Triar Contabilidade">
@@ -660,56 +1045,233 @@
         </div>
       </div>
     </section>
+<!-- ==================== FAQ ==================== -->
+<section id="faq-section" >
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- Título -->
+    <div class="text-center mb-16">
+      <h2 class="section-title-faq" id="faq">Perguntas Frequentes</h2>
+    </div>
 
-    <!-- 9. FAQ -->
-    <section id="faq" class="card" role="region" aria-label="Perguntas frequentes">
-      <h2>Perguntas Frequentes</h2>
+    <!-- Container das perguntas -->
+    <div id="faqContainer" class="space-y-4"></div>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
-          Quem é a Triar Contabilidade? 
+    <!-- CTA Final -->
+    <div class="cta-moderno">
+      <h3  class="cta-title-moderno">
+        Ainda tem dúvidas?
+      </h3>
+      <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+        Nossa equipe está pronta para te atender e esclarecer todas as suas questões
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href="https://wa.me/553536361407"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-8 py-4 bg-white text-cyan-600 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all inline-flex items-center"
+        >
+          <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+          Falar no WhatsApp
+        </a>
+        <a
+          href="#contato"
+          class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-cyan-600 transition-all inline-flex items-center"
+        >
+          <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+          Enviar E-mail
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== Scripts do FAQ ====== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+#faq-section .section-title-faq {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0099cc 0%, #00b8e6 50%, #0099cc 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 20px;
+  text-align: center;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* underline animado */
+#faq-section .section-title-faq::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #00b8e6, #0099cc, #66ccff);
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out 0.5s forwards;
+}
+
+/* underline expande só até 60% do texto */
+@keyframes faqExpandLine {
+  to {
+    width: 60%;
+  }
+}
+
+
+/* Respostas expansíveis */
+#faq-section .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+#faq-section .faq-answer.expanded {
+  max-height: 500px;
+}
+</style>
+
+
+
+<script>
+const faqData = [
+  {
+    id: 1,
+    category: 'geral',
+    question: 'Quem é a Triar Contabilidade?',
+    answer:
+      'A Triar Contabilidade é um dos maiores escritórios contábeis da região, com mais de 30 anos de experiência, equipe especializada e atendimento a centenas de empresas no Brasil e no exterior.',
+    icon: 'briefcase',
+  },
+  {
+    id: 2,
+    category: 'abertura',
+    question: 'Quanto tempo leva para abrir uma empresa?',
+    answer:
+      'O processo completo leva em média 5 a 15 dias úteis, dependendo da complexidade e do tipo de negócio. Em casos especiais, conseguimos agilizar para até 48 horas.',
+    icon: 'building-2',
+  },
+  {
+    id: 3,
+    category: 'abertura',
+    question: 'Quais documentos preciso para abrir minha empresa?',
+    answer:
+      'Você precisará de: RG, CPF, comprovante de residência, IPTU do local (se próprio) ou contrato de locação, e informações sobre as atividades da empresa. Nossa equipe orienta todo o processo.',
+    icon: 'file-text',
+  },
+  {
+    id: 4,
+    category: 'fiscal',
+    question: 'Como escolher o melhor regime tributário?',
+    answer:
+      'A escolha depende do faturamento, atividade, margem de lucro e estrutura da empresa. Analisamos todos esses fatores para recomendar entre Simples Nacional, Lucro Presumido ou Lucro Real.',
+    icon: 'bar-chart-3',
+  },
+  {
+    id: 5,
+    category: 'fiscal',
+    question: 'O que é o TTS (Tratamento Tributário Setorial)?',
+    answer:
+      'TTS é um regime especial de Minas Gerais que oferece benefícios fiscais para diversos setores. Permite redução significativa de ICMS com total segurança jurídica (LC 160/2017 e Conv. ICMS 190/2017).',
+    icon: 'bar-chart-2',
+  },
+  {
+    id: 6,
+    category: 'servicos',
+    question: 'Vocês atendem empresas fora de Minas Gerais?',
+    answer:
+      'Sim! Atendemos empresas em todo o Brasil e também no exterior. Nosso atendimento é 100% digital, mas também temos escritórios físicos em Ouro Fino e Jacutinga-MG.',
+    icon: 'globe',
+  },
+  {
+    id: 7,
+    category: 'fiscal',
+    question: 'Como evitar problemas com a Receita Federal?',
+    answer:
+      'Mantendo a contabilidade em dia, cumprindo todos os prazos fiscais, escolhendo o regime tributário correto e contando com um contador especializado. Fazemos todo esse acompanhamento preventivo.',
+    icon: 'shield-check',
+  },
+  {
+    id: 8,
+    category: 'servicos',
+    question: 'Quanto custam os serviços contábeis?',
+    answer:
+      'Os valores variam conforme o porte da empresa, regime tributário e serviços contratados. Entre em contato para uma proposta personalizada sem compromisso.',
+    icon: 'wallet',
+  },
+];
+
+let expandedQuestion = null;
+
+function renderFAQs() {
+  const container = document.getElementById('faqContainer');
+
+  container.innerHTML = faqData
+    .map(
+      (faq) => `
+      <div class="bg-white rounded-2xl shadow-md border-2 transition-all duration-300 overflow-hidden ${
+        expandedQuestion === faq.id
+          ? 'border-cyan-400 shadow-xl'
+          : 'border-transparent hover:border-gray-200'
+      }">
+        <button
+          onclick="toggleQuestion(${faq.id})"
+          class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        >
+          <div class="flex items-start gap-4 flex-1">
+            <i data-lucide="${faq.icon}" class="text-2xl flex-shrink-0 mt-1 w-6 h-6 text-gray-700"></i>
+            <span class="text-lg font-bold text-gray-800 leading-snug">
+              ${faq.question}
+            </span>
+          </div>
+          <div class="ml-4 flex-shrink-0 transition-transform duration-300 ${
+            expandedQuestion === faq.id ? 'rotate-180' : ''
+          }">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-cyan-600"></i>
+          </div>
         </button>
-        <div class="faq-answer" id="faq1">
-          <p>A Triar Contabilidade é um dos maiores escritórios contábeis da região, com mais de 30 anos de experiência, equipe especializada e atendimento a centenas de empresas no Brasil e no exterior.</p>
+
+        <div class="faq-answer ${
+          expandedQuestion === faq.id ? 'expanded' : ''
+        }">
+          <div class="px-8 pb-6 pt-2">
+            <div class="pl-12 border-l-4 border-cyan-400 ml-1">
+              <p class="text-gray-700 leading-relaxed text-base">
+                ${faq.answer}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+    `
+    )
+    .join('');
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
-          Como posso me tornar um cliente da Triar Contabilidade?
-        </button>
-        <div class="faq-answer" id="faq2">
-          <p>Para se tornar um cliente da Triar, entre em contato conosco através do nosso site ou telefone. Nossa equipe especializada fará uma análise das suas necessidades e apresentará uma proposta personalizada.</p>
-        </div>
-      </div>
+  lucide.createIcons();
+}
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
-          Quais serviços de contabilidade vocês oferecem?
-        </button>
-        <div class="faq-answer" id="faq3">
-          <p>Oferecemos soluções em regimes tributários (MEI, ME, Lucro Real, Regime Especial MG), contabilidade global, importação e exportação, além de consultoria especializada para empresas de diferentes portes.</p>
-        </div>
-      </div>
+function toggleQuestion(id) {
+  expandedQuestion = expandedQuestion === id ? null : id;
+  renderFAQs();
+}
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
-          Como funciona o processo de abertura de empresa?
-        </button>
-        <div class="faq-answer" id="faq4">
-          <p>Cuidamos de todo o processo: análise do melhor regime tributário, emissão do CNPJ, registros nos órgãos competentes e regularização fiscal, para que você abra sua empresa com segurança e rapidez.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
-          Como evitar problemas com a Receita Federal?
-        </button>
-        <div class="faq-answer" id="faq5">
-          <p>Mantendo a contabilidade em dia, cumprindo prazos fiscais e escolhendo o regime tributário correto com apoio do contador.</p>
-        </div>
-      </div>
-    </section>
+// Inicializa
+renderFAQs();
+lucide.createIcons();
+</script>
 
     <!-- 10. CONTATO -->
     <section id="contato" class="card contato" role="region" aria-label="Informações de contato">
@@ -776,6 +1338,438 @@
     </section>
   </main>
 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Interativo - Triar Contabilidade</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Fundo geral */
+.mapa-interativo-section {
+  padding: 100px 20px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.mapa-container-novo {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mapa-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.mapa-titulo {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #0096c7 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.mapa-subtitulo {
+  font-size: 1.2rem;
+  color: #475569;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Mapa principal */
+.mapa-visual {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 102, 153, 0.1);
+  border: 2px solid rgba(0, 184, 230, 0.1);
+  margin-bottom: 40px;
+}
+
+
+
+.mapa-interativo-wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border: 3px solid #bae6fd;
+  position: relative;
+}
+
+.mapa-interativo-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00b4d8 0%, #0077b6 50%, #0096c7 100%);
+  z-index: 10;
+}
+
+#mapaGoogle {
+  width: 100%;
+  height: 500px;
+  border: 0;
+}
+
+/* Grid dos escritórios */
+.escritorios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.escritorio-card {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.escritorio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Cores de destaque — tons de azul */
+.escritorio-card.card-ouro-fino::before {
+  background: linear-gradient(90deg, #00b4d8, #0077b6);
+}
+
+.escritorio-card.card-jacutinga::before {
+  background: linear-gradient(90deg, #48cae4, #0096c7);
+}
+
+.escritorio-card.card-pouso-alegre::before {
+  background: linear-gradient(90deg, #0077b6, #023e8a);
+}
+
+.escritorio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.escritorio-card.card-ouro-fino:hover {
+  border-color: #0096c7;
+  box-shadow: 0 20px 60px rgba(0, 150, 199, 0.3);
+}
+
+.escritorio-card.card-jacutinga:hover {
+  border-color: #00b4d8;
+  box-shadow: 0 20px 60px rgba(0, 180, 216, 0.3);
+}
+
+.escritorio-card.card-pouso-alegre:hover {
+  border-color: #0077b6;
+  box-shadow: 0 20px 60px rgba(0, 119, 182, 0.3);
+}
+
+.escritorio-icone {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.escritorio-nome {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.card-ouro-fino .escritorio-nome {
+  color: #0077b6;
+}
+
+.card-jacutinga .escritorio-nome {
+  color: #00b4d8;
+}
+
+.card-pouso-alegre .escritorio-nome {
+  color: #023e8a;
+}
+
+.escritorio-endereco {
+  color: #64748b;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.escritorio-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.contato-itemm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-weight: 600;
+  padding: 10px 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.contato-itemm:hover {
+
+  transform: translateX(5px);
+}
+
+/* Botões */
+.btn-rota {
+  display: block;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.btn-rota::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.btn-rota:hover::before {
+  left: 100%;
+}
+
+.card-ouro-fino .btn-rota {
+  background: linear-gradient(135deg, #0096c7 0%, #0077b6 100%);
+}
+
+.card-ouro-fino .btn-rota:hover {
+  background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 150, 199, 0.4);
+}
+
+.card-jacutinga .btn-rota {
+  background: linear-gradient(135deg, #00b4d8 0%, #0096c7 100%);
+}
+
+.card-jacutinga .btn-rota:hover {
+  background: linear-gradient(135deg, #0096c7 0%, #0077b6 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 180, 216, 0.4);
+}
+
+.card-pouso-alegre .btn-rota {
+  background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+}
+
+.card-pouso-alegre .btn-rota:hover {
+  background: linear-gradient(135deg, #0096c7 0%, #002b5c 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 119, 182, 0.4);
+}
+.mapa-titulo-local {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 2.0rem;
+  font-weight: 800;
+  color: #1675a0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.mapa-titulo-locall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 2.0rem;
+  font-weight: 800;
+  color: #1675a0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+/* Responsivo */
+@media (max-width: 1024px) {
+  .escritorios-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .mapa-titulo {
+    font-size: 2.5rem;
+  }
+
+  #mapaGoogle {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mapa-interativo-section {
+    padding: 80px 15px;
+  }
+
+  .mapa-titulo {
+    font-size: 2rem;
+  }
+
+  .escritorio-nome {
+    font-size: 1.3rem;
+  }
+
+  #mapaGoogle {
+    height: 350px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <section class="mapa-interativo-section">
+    <div class="mapa-container-novo">
+      
+      <!-- Header -->
+      <div class="mapa-header">
+        <h2 class="mapa-titulo">🗺️ Onde Estamos</h2>
+        <p class="mapa-subtitulo">
+          Atendimento presencial, digital e personalizado em toda Minas Gerais e Brasil
+        </p>
+      </div>
+
+<div class="mapa-visual">
+  <h3 class="mapa-titulo-locall">
+    <i data-lucide="map-pin"></i>
+    Nossas Localizações
+  </h3>
+
+  <div class="mapa-interativo-wrapper">
+    <iframe
+      id="mapaGoogle"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.1668942462813!2d-46.372579525157885!3d-22.27620907969109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cb9a828e8b8e0b%3A0xd7e38a57b6a13b85!2sR.%20Guarda-Mor%20Lustosa%2C%20560%20-%20Centro%2C%20Ouro%20Fino%20-%20MG%2C%2037570-000!5e0!3m2!1spt-BR!2sbr!4v1731268834567!5m2!1spt-BR!2sbr"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+
+      <!-- Grid dos 3 Escritórios - Horizontal -->
+      <div class="escritorios-grid">
+        
+        <!-- Ouro Fino -->
+        <div class="escritorio-card card-ouro-fino">
+          <span class="escritorio-icone">🏢</span>
+          <div class="escritorio-nome">Ouro Fino - Matriz</div>
+          <div class="escritorio-endereco">
+            📮 Rua Guarda Mor Lustosa, 560<br>
+            Centro - CEP 37570-000<br>
+            Ouro Fino - MG
+          </div>
+          <div class="escritorio-contato">
+            <div class="contato-itemm">📞 (35) 3636-1407</div>
+            <div class="contato-itemm">⏰ Seg-Sex: 8h às 18h</div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rua+Guarda+Mor+Lustosa+560+Centro+Ouro+Fino+MG+37570-000" 
+             target="_blank" 
+             class="btn-rota">
+            🧭 Como Chegar
+          </a>
+        </div>
+
+        <!-- Jacutinga -->
+        <div class="escritorio-card card-jacutinga">
+          <span class="escritorio-icone">🏢</span>
+          <div class="escritorio-nome">Jacutinga - Filial</div>
+          <div class="escritorio-endereco">
+            📮 Rua Santo Antônio, 333<br>
+            Centro - CEP 37590-000<br>
+            Jacutinga - MG
+          </div>
+          <div class="escritorio-contato">
+            <div class="contato-itemm">📞 (35) 3636-1407</div>
+            <div class="contato-itemm">⏰ Seg-Sex: 8h às 18h</div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rua+Santo+Antônio+333+Centro+Jacutinga+MG+37590-000" 
+             target="_blank" 
+             class="btn-rota">
+            🧭 Como Chegar
+          </a>
+        </div>
+
+        <!-- Pouso Alegre -->
+        <div class="escritorio-card card-pouso-alegre">
+          <span class="escritorio-icone">🏢</span>
+          <div class="escritorio-nome">Pouso Alegre - Filial</div>
+          <div class="escritorio-endereco">
+            📮 Rod. Fernão Dias, BR-381, KM 861<br>
+            Limeira - CEP 37561-800<br>
+            Pouso Alegre - MG
+          </div>
+          <div class="escritorio-contato">
+            <div class="contato-itemm">📞 (35) 3636-1407</div>
+            <div class="contato-itemm">⏰ Seg-Sex: 8h às 18h</div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rodovia+Fernão+Dias+BR-381+KM+861+Limeira+Pouso+Alegre+MG+37561-800" 
+             target="_blank" 
+             class="btn-rota">
+            🧭 Como Chegar
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
   <!-- 11. RODAPÉ -->
   <footer class="footer" role="contentinfo">
     <div class="footer-container">
@@ -822,7 +1816,7 @@
         </ul>
       </div>
 
-      <div class="footer-col">
+       <div class="footer-col">
         <h3>Localidades</h3>
         <p><strong>Ouro Fino</strong><br>
           Guarda Mor Lusrosa, 560<br>
@@ -831,6 +1825,11 @@
         <p><strong>Jacutinga</strong><br>
           Rua Santo Antônio, 331<br>
           Centro - CEP 37590-000
+        </p>
+        <p><strong>Pouso Alegre</strong><br>
+          Rod. Fernão Dias, BR-381, KM 861
+<br>
+          Limeira - CEP 37561-800
         </p>
       </div>
 
@@ -856,5 +1855,51 @@
   </a>
 
   <script src="main.js"></script>
+  <script>
+  function initMap() {
+    const ouroFino = { lat: -22.2776, lng: -46.3719 };
+    const jacutinga = { lat: -22.2859, lng: -46.6136 };
+
+    const map = new google.maps.Map(document.getElementById("googleMap"), {
+      zoom: 9,
+      center: ouroFino,
+      mapId: "DEMO_MAP_ID",
+      styles: [
+        { featureType: "poi", stylers: [{ visibility: "off" }] },
+        { featureType: "transit", stylers: [{ visibility: "off" }] }
+      ]
+    });
+
+    const markerOuroFino = new google.maps.Marker({
+      position: ouroFino,
+      map: map,
+      title: "Ouro Fino - Matriz"
+    });
+
+    const markerJacutinga = new google.maps.Marker({
+      position: jacutinga,
+      map: map,
+      title: "Jacutinga - Filial"
+    });
+
+    const infoOuroFino = new google.maps.InfoWindow({
+      content: "<strong>Ouro Fino - Matriz</strong><br>Rua Guarda Mor Lusrosa, 560"
+    });
+
+    const infoJacutinga = new google.maps.InfoWindow({
+      content: "<strong>Jacutinga - Filial</strong><br>Rua Santo Antônio, 331"
+    });
+
+    markerOuroFino.addListener("click", () => infoOuroFino.open(map, markerOuroFino));
+    markerJacutinga.addListener("click", () => infoJacutinga.open(map, markerJacutinga));
+  }
+</script>
+
+<!-- ⚙️ API do Google Maps (coloque sua chave no parâmetro key=) -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
 </body>
 </html>

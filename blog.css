@@ -9,8 +9,15 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
-
+.post-container {
+  max-width: 900px;
+  margin: -50px auto 80px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
 .blog-hero::before {
   content: '';
   position: absolute;
@@ -72,6 +79,7 @@
   margin-bottom: 20px;
   letter-spacing: -2px;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  align-items: center;
 }
 
 .blog-subtitle {
@@ -86,7 +94,7 @@
 /* ===== CONTAINER PRINCIPAL ===== */
 .blog-main {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f8fbff 0%, #f0f9ff 100%);
+
   min-height: 100vh;
 }
 
@@ -350,6 +358,7 @@
   max-width: 1200px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 .blog-cta::before {

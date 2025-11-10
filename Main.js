@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (servico) texto += `*Serviço de interesse:* ${servico}\n`;
       texto += `*Mensagem:* ${mensagem}`;
       
-      const url = `https://wa.me/553536361407?text=${encodeURIComponent(texto)}`;
+  const url = `https://wa.me/553536361407?text=${encodeURIComponent(texto)}`;
       
       try {
         window.open(url, '_blank');
@@ -526,6 +526,77 @@ document.addEventListener('DOMContentLoaded', () => {
       const benefits = Array.from(card.querySelectorAll('.benefits-list-modern li')).map(li => li.textContent.trim());
       openModal({ title, description, benefits });
     });
+
+  // ===== ANIMAÇÕES DE SCROLL AVANÇADAS (VERSÃO CORRIGIDA) =====
+(function initScrollAnimations() {
+  const animateOnScroll = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(animateOnScroll, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // Seleciona elementos que devem animar
+  const elementsToAnimate = document.querySelectorAll(`
+    .service-card-box,
+    .benefit-card,
+    .empresa-card,
+    .info-card,
+    .calculator-wrapper,
+    .form-contato,
+    .numero,
+    .service-card,
+    .faq-item
+  `);
+
+  elementsToAnimate.forEach((el) => {
+    el.classList.add('animate-on-scroll');
+    observer.observe(el);
+  });
+})();
+
+// ===== PARALLAX SUAVE =====
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrolled = window.pageYOffset;
+      
+      // Parallax nas imagens (mais suave)
+      const images = document.querySelectorAll('.sobre-imagem img, .contato-imagem img');
+      images.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const speed = 0.05; // Velocidade reduzida
+          img.style.transform = `translateY(${(rect.top - window.innerHeight/2) * speed}px)`;
+        }
+      });
+
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+
+// ===== PARALLAX NO VÍDEO DO HERO (OPCIONAL) =====
+const bgVideo = document.querySelector('.bg-video');
+if (bgVideo) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    if (scrolled < window.innerHeight) {
+      bgVideo.style.transform = `translateY(${scrolled * 0.3}px) scale(1.05)`;
+    }
+  });
+}
   })();
 
 });
