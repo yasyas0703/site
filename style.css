@@ -13,22 +13,18 @@
   --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ===== ANIMAÇÕES DE SCROLL (SEM ESCONDER SEÇÕES PRINCIPAIS) ===== */
 
-/* Estado inicial dos elementos que vão animar */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Estado final quando visível */
 .animate-on-scroll.animate-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Animação específica para cards de serviço */
 .service-card-box.animate-on-scroll {
   transform: translateY(40px) scale(0.95);
 }
@@ -37,12 +33,10 @@
   transform: translateY(0) scale(1);
 }
 
-/* Delay progressivo para números */
 .numero.animate-on-scroll:nth-child(1) { transition-delay: 0s; }
 .numero.animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
 .numero.animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
 
-/* Animação para cards de empresa */
 .empresa-card.animate-on-scroll {
   transform: translateY(40px) rotateX(10deg);
 }
@@ -51,7 +45,6 @@
   transform: translateY(0) rotateX(0);
 }
 
-/* FAQ items */
 .faq-item.animate-on-scroll {
   transform: translateX(-30px);
 }
@@ -60,7 +53,6 @@
   transform: translateX(0);
 }
 
-/* Garantir que seções principais SEMPRE apareçam */
 .sobre-nos,
 .contato,
 .depoimentos,
@@ -285,7 +277,6 @@ body::before {
   transform: scale(1.1);
   box-shadow: 0 8px 25px rgba(0, 184, 230, 0.4);
 }
-/* NAVBAR MAIS ELEGANTE COM GLASSMORPHISM */
 header {
   width: 90%;
   margin: 20px auto 0 auto;
@@ -748,7 +739,6 @@ main {
   animation-duration: 9s;
 }
 
-/* Animações aprimoradas */
 @keyframes orbitFloat {
   0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
   100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
@@ -1113,7 +1103,6 @@ main {
   position: relative;
 }
 
-/* Texto */
 .info-card p {
   color: #00334d;
   line-height: 1.7;
@@ -1538,7 +1527,7 @@ main {
 .numero {
   flex: 1;
   text-align: center;
-  padding: 20px 20px; /* Aumentei o padding lateral */
+  padding: 20px 20px; 
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(15px);
   border-radius: 20px;
@@ -1613,7 +1602,7 @@ main {
   font-weight: 600;
   text-align: center;
   word-spacing: 0; /* ← Força espaçamento padrão */
-  letter-spacing: normal; /* ← Remove espaçamento extra entre letras */
+  letter-spacing: normal; 
 }
 .diferenciais {
   padding: 120px 50px;
@@ -4902,13 +4891,10 @@ body {
   height: 16px; 
   transition: transform 0.3s ease; 
 }
-/* Quando passar o mouse no botão, a seta se move para a direita */
 .btn-service-modern:hover .arrow-icon-modern { 
   transform: translateX(4px); 
 }
-/* CTA Final - Largura Total */
-/* CTA Final - Largura Total */
-/* CTA Final - Largura Total */
+
 .cta-section-modern {
   
   margin-bottom: 60px;
@@ -4947,81 +4933,73 @@ body {
   max-width: 600px;
   margin: 0 auto;
 }
-/* ===== TÍTULO DO CTA (versão moderna) ===== */
 .cta-title-modern { 
-  font-size: 2.5rem;          /* Tamanho grande */
+  font-size: 2.5rem;          
   font-weight: 800;           /* Super negrito */
-  margin-bottom: 20px;        /* Espaço abaixo */
-  letter-spacing: -0.5px;     /* Letras mais próximas */
+  margin-bottom: 20px;       
+  letter-spacing: -0.5px;     
 }
 
-/* ===== DESCRIÇÃO DO CTA (versão moderna) ===== */
 .cta-description-modern { 
-  font-size: 1.2rem;          /* Fonte legível */
-  opacity: 0.95;              /* Quase totalmente opaco */
-  margin-bottom: 30px;        /* Espaço abaixo */
-  max-width: 700px;           /* Largura máxima maior */
-  margin-left: auto;          /* Centraliza */
-  margin-right: auto;         /* Centraliza */
+  font-size: 1.2rem;         
+  opacity: 0.95;              
+  margin-bottom: 30px;        
+  max-width: 700px;           
+  margin-left: auto;         
+  margin-right: auto;        
 }
 
-/* ===== BOTÃO CTA (versão moderna) ===== */
 .btn-cta-modern { 
-  display: inline-flex;       /* Flexbox inline (permite alinhar ícone + texto) */
-  align-items: center;        /* Alinha verticalmente */
-  gap: 10px;                  /* Espaço entre texto e ícone */
-  background: #fff;           /* Fundo branco */
-  color: #0099cc;             /* Texto azul */
+  display: inline-flex;       
+  align-items: center;        
+  gap: 10px;                  
+  background: #fff;           
+  color: #0099cc;             
   padding: 16px 32px;         /* Espaçamento interno */
-  border-radius: 50px;        /* Bordas bem arredondadas (pílula) */
-  text-decoration: none;      /* Remove sublinhado */
-  font-weight: 700;           /* Negrito */
-  font-size: 1.1rem;          /* Tamanho da fonte */
-  transition: all 0.3s ease;  /* Animação suave */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  border-radius: 50px;      
+  text-decoration: none;      
+  font-weight: 700;           
+  font-size: 1.1rem;          
+  transition: all 0.3s ease; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
   
 }
 
-/* ===== HOVER DO BOTÃO ===== */
 .btn-cta-modern:hover {
-  transform: translateY(-3px);  /* Move 3px para cima */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra mais forte */
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== ÍCONE DE SETA DO BOTÃO ===== */
 .btn-cta-modern .arrow-icon-cta {
-  width: 20px;                /* Largura do ícone */
-  height: 20px;               /* Altura do ícone */
-  stroke-width: 3;            /* Espessura da linha do SVG */
-  transition: transform 0.3s ease; /* Animação suave */
+  width: 20px;               
+  height: 20px;            
+  stroke-width: 3;            
+  transition: transform 0.3s ease; 
 }
 
-/* ===== HOVER NO ÍCONE ===== */
 .btn-cta-modern:hover .arrow-icon-cta {
-  transform: translateX(5px);  /* Move a seta 5px para a direita */
+  transform: translateX(5px); 
 }
 
-/* ===== RESPONSIVO PARA TELAS PEQUENAS (até 480px) ===== */
 @media (max-width: 480px) {
   .cta-section-modern {
-    padding: 40px 20px;       /* Menos padding em telas pequenas */
-    margin-top: 50px;         /* Menos espaço acima */
+    padding: 40px 20px;      
+    margin-top: 50px;         
   }
   
   .cta-title-modern {
-    font-size: 1.8rem;        /* Título menor */
+    font-size: 1.8rem;        
   }
   
   .cta-description-modern {
-    font-size: 1rem;          /* Descrição menor */
+    font-size: 1rem;          
   }
   
   .btn-cta-modern {
-    padding: 12px 24px;       /* Botão menor */
-    font-size: 0.95rem;       /* Fonte menor */
+    padding: 12px 24px;       
+    font-size: 0.95rem;      
   }
 }
-/* End modern services styles */
 
 .contato-item:hover .emoji {
   transform: scale(1.1) rotate(5deg);
@@ -5412,18 +5390,17 @@ footer.footer::before {
   align-items: center;
   gap: 15px;
   color: #ccefff;
-  margin-bottom: 15px; /* Reduzido de 20px para 15px */
+  margin-bottom: 15px; 
   padding: 10px 0;
   transition: all 0.3s ease;
 }
 
-/* Garante que todos os ícones SVG tenham o mesmo tamanho */
 .footer-contato p svg {
-  width: 20px; /* Tamanho fixo */
-  height: 20px; /* Tamanho fixo */
-  min-width: 20px; /* Evita encolhimento */
-  min-height: 20px; /* Evita encolhimento */
-  flex-shrink: 0; /* Não permite redução */
+  width: 20px; 
+  height: 20px;
+  min-width: 20px; 
+  min-height: 20px; 
+  flex-shrink: 0; 
   fill: #00b8e6;
 }
 
@@ -5479,7 +5456,6 @@ footer.footer::before {
   height: 1px;
   background: linear-gradient(90deg, transparent, #00b8e6, transparent);
 }
-/* Adicione este CSS para remover completamente o pontinho */
 
 .footer-social {
   display: flex;
@@ -5488,7 +5464,7 @@ footer.footer::before {
 }
 
 .footer-social a {
-  display: inline-flex; /* ou flex */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -5496,15 +5472,15 @@ footer.footer::before {
   background: rgba(0, 184, 230, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease;
-  text-decoration: none; /* Remove sublinhado */
-  outline: none; /* Remove outline */
-  border: none; /* Remove borda */
+  text-decoration: none; 
+  outline: none; 
+  border: none; 
   position: relative;
 }
 
 .footer-social a::before,
 .footer-social a::after {
-  display: none; /* Remove pseudo-elementos */
+  display: none; 
 }
 
 .footer-social a:hover {
@@ -5513,12 +5489,11 @@ footer.footer::before {
 }
 
 .footer-social a svg {
-  display: block; /* Remove espaços extras */
+  display: block; 
   width: 20px;
   height: 20px;
 }
 
-/* Remove qualquer decoração em links focados */
 .footer-social a:focus {
   outline: 2px solid #00b8e6;
   outline-offset: 2px;

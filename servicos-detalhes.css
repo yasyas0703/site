@@ -1,12 +1,6 @@
-/* ========================================
-   CSS PARA PÁGINAS DE DETALHES DE SERVIÇOS
-   servicos-detalhes.css
-   ======================================== */
 
-/* Importa o estilo base */
 @import url('style.css');
 
-/* ===== SEÇÃO HERO DO SERVIÇO ===== */
 .servico-hero {
   background: linear-gradient(135deg, #0099cc, #00b4d8);
   color: white;
@@ -98,14 +92,12 @@
   font-weight: 300;
 }
 
-/* ===== CONTAINER PRINCIPAL ===== */
 .servico-detalhes-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px 100px;
 }
 
-/* ===== SEÇÃO DE VISÃO GERAL ===== */
 .servico-visao-geral {
   background: white;
   border-radius: 20px;
@@ -129,7 +121,6 @@
   margin-bottom: 20px;
 }
 
-/* ===== GRID DE BENEFÍCIOS ===== */
 .beneficios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -194,7 +185,6 @@
   font-size: 1.05rem;
 }
 
-/* ===== SEÇÃO DE PROCESSOS ===== */
 .servico-processos {
   background: linear-gradient(135deg, rgba(230, 247, 255, 0.5), rgba(193, 227, 255, 0.3));
   border-radius: 25px;
@@ -264,7 +254,6 @@
   font-size: 1.05rem;
 }
 
-/* ===== SEÇÃO DE DIFERENCIAIS ===== */
 .servico-diferenciais {
   margin-bottom: 60px;
 }
@@ -323,7 +312,6 @@
   font-weight: 500;
 }
 
-/* ===== CTA FINAL ===== */
 .servico-cta {
   background: linear-gradient(135deg, #0099cc, #00b4d8);
   border-radius: 25px;
@@ -415,7 +403,6 @@
   transform: translateY(-4px) scale(1.05);
 }
 
-/* ===== OUTROS SERVIÇOS ===== */
 .outros-servicos {
   margin-bottom: 60px;
 }
@@ -496,7 +483,6 @@
   color: #00b8e6;
 }
 
-/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 1024px) {
   .servico-hero {
     padding: 120px 5% 60px;

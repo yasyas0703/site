@@ -40,9 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale, .fade-in-rotate, .fade-in-bounce, .slide-in-from-bottom, .zoom-in, .flip-in');
   animatedElements.forEach(el => observer.observe(el));
 
-  // ===== ANIMAÇÕES AO SCROLL (OPCIONAL) =====
-  // Observador específico para cards de serviço e seção CTA.
-  // Usa as mesmas opções definidas acima (observerOptions) para consistência.
   if ('IntersectionObserver' in window) {
     const serviceObserver = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -56,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const serviceCards = document.querySelectorAll('.service-card');
     serviceCards.forEach(card => {
-      // estado inicial (caso CSS não defina)
       if (!card.style.opacity) card.style.opacity = '0';
       if (!card.style.transform) card.style.transform = 'translateY(20px)';
       serviceObserver.observe(card);
@@ -69,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       serviceObserver.observe(ctaSection);
     }
 
-    // ===== ANIMAÇÃO DE HOVER NOS CARDS =====
     serviceCards.forEach(card => {
       card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-8px) scale(1.02)';
@@ -80,8 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // ===== CONTADOR DE ANIMAÇÃO (OPCIONAL) =====
-    // Adiciona um delay progressivo para cada card
     serviceCards.forEach((card, index) => {
       card.style.animationDelay = `${index * 0.1}s`;
     });
@@ -457,7 +450,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   initElementParallax();
-  // ===== Modal de Serviços (abre com os botões "Saiba mais") =====
   (function initServiceModal() {
     function buildModal() {
       const modal = document.createElement('div');
@@ -527,7 +519,6 @@ document.addEventListener('DOMContentLoaded', () => {
       openModal({ title, description, benefits });
     });
 
-  // ===== ANIMAÇÕES DE SCROLL AVANÇADAS (VERSÃO CORRIGIDA) =====
 (function initScrollAnimations() {
   const animateOnScroll = (entries, observer) => {
     entries.forEach((entry) => {
@@ -543,7 +534,6 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -50px 0px'
   });
 
-  // Seleciona elementos que devem animar
   const elementsToAnimate = document.querySelectorAll(`
     .service-card-box,
     .benefit-card,
@@ -562,7 +552,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// ===== PARALLAX SUAVE =====
 let ticking = false;
 
 window.addEventListener('scroll', () => {
@@ -570,12 +559,11 @@ window.addEventListener('scroll', () => {
     window.requestAnimationFrame(() => {
       const scrolled = window.pageYOffset;
       
-      // Parallax nas imagens (mais suave)
       const images = document.querySelectorAll('.sobre-imagem img, .contato-imagem img');
       images.forEach(img => {
         const rect = img.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-          const speed = 0.05; // Velocidade reduzida
+          const speed = 0.05; 
           img.style.transform = `translateY(${(rect.top - window.innerHeight/2) * speed}px)`;
         }
       });
@@ -587,7 +575,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ===== PARALLAX NO VÍDEO DO HERO (OPCIONAL) =====
 const bgVideo = document.querySelector('.bg-video');
 if (bgVideo) {
   window.addEventListener('scroll', () => {

@@ -1,9 +1,4 @@
 
-/* ===================================================================
-   BLOG-POST-NOVO.CSS - ESTILOS MODERNOS PARA ARTIGOS DO BLOG
-   ================================================================ */
-
-/* ===== VARIÁVEIS ===== */
 :root {
   --primary: #0099cc;
   --primary-light: #00b8e6;
@@ -24,12 +19,10 @@
   --shadow-lg: 0 15px 40px rgba(0, 153, 204, 0.15);
 }
 
-/* ===== RESET BODY ===== */
 body {
   overflow-x: hidden;
 }
 
-/* ===== HERO SECTION ===== */
 .post-hero {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   min-height: 80vh;
@@ -127,12 +120,10 @@ body {
 .meta-item svg {
   opacity: 0.8;
 }
-/* Garantir que o span dentro do título não quebre o alinhamento */
 .hero-title .highlight-text {
   display: inline;
   text-align: center;
 }
-/* ===== CONTAINER PRINCIPAL ===== */
 .post-container {
   max-width: 900px;
   margin: -50px auto 80px;
@@ -141,7 +132,6 @@ body {
   z-index: 10;
 }
 
-/* ===== SEÇÃO INTRODUÇÃO ===== */
 .post-intro-section {
   background: white;
   padding: 60px 50px;
@@ -192,7 +182,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== CARDS DE REGIME ===== */
 .regime-card {
   background: white;
   border-radius: 25px;
@@ -324,7 +313,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== BOX DE TRIBUTOS ===== */
 .tributos-box {
   background: var(--bg-light);
   padding: 30px;
@@ -363,7 +351,6 @@ body {
   box-shadow: 0 6px 20px rgba(0, 153, 204, 0.2);
 }
 
-/* ===== BOX DE VANTAGENS ===== */
 .vantagens-box {
   background: linear-gradient(135deg, rgba(82, 183, 136, 0.08), rgba(82, 183, 136, 0.04));
   padding: 30px;
@@ -424,7 +411,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== ALERT BOXES ===== */
 .alert-box {
   display: flex;
   align-items: flex-start;
@@ -485,7 +471,6 @@ body {
   color: #dc2626;
 }
 
-/* ===== TIP BOX ===== */
 .tip-box {
   display: flex;
   align-items: flex-start;
@@ -507,7 +492,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== PERCENTUAIS BOX ===== */
 .percentuais-box {
   background: var(--bg-light);
   padding: 30px;
@@ -558,7 +542,6 @@ body {
   font-weight: 600;
 }
 
-/* ===== EXEMPLO PRÁTICO ===== */
 .exemplo-box {
   background: linear-gradient(135deg, var(--bg-lighter), var(--bg-light));
   padding: 30px;
@@ -624,7 +607,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== OBRIGATÓRIAS BOX ===== */
 .obrigatorias-box {
   background: var(--bg-light);
   padding: 30px;
@@ -670,7 +652,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== TABELA COMPARATIVA ===== */
 .comparacao-section {
   margin: 80px 0;
   text-align: center;
@@ -780,7 +761,6 @@ body {
   border: 2px solid rgba(239, 68, 68, 0.3);
 }
 
-/* ===== SEÇÃO DE DECISÃO ===== */
 .decisao-section {
   margin: 80px 0;
 }
@@ -880,7 +860,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== CTA INLINE ===== */
 .cta-inline {
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
   padding: 50px 45px;
@@ -957,7 +936,6 @@ body {
 .btn-cta-inline:hover svg {
   transform: translateX(5px);
 }
-/* ===== CONCLUSÃO ===== */
 .conclusao-section {
   background: white;
   padding: 60px 50px;
@@ -984,7 +962,6 @@ body {
   font-weight: 700;
 }
 
-/* ===== TAGS ===== */
 .post-tags-section {
   display: flex;
   align-items: center;
@@ -1037,7 +1014,6 @@ body {
   box-shadow: 0 6px 20px rgba(0, 153, 204, 0.3);
 }
 
-/* ===== COMPARTILHAR ===== */
 .share-section {
   padding: 40px;
   background: white;
@@ -1099,7 +1075,6 @@ body {
   color: #fff;
 }
 
-/* ===== ARTIGOS RELACIONADOS ===== */
 .related-section {
   background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-lighter) 100%);
   padding: 100px 5%;
@@ -1245,7 +1220,6 @@ body {
   transform: translateX(3px);
 }
 
-/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 1024px) {
   .hero-title {
     font-size: 3.2rem;
@@ -1425,7 +1399,6 @@ body {
   padding: 0 20px;
 }
 
-/* subtítulo central */
 .hero-subtitle {
   font-size: 1.25rem;
   line-height: 1.8;
@@ -1435,7 +1408,6 @@ body {
   text-align: center;
 }
 
-/* metadados centralizados */
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
@@ -1720,7 +1692,6 @@ body {
   }
 }
 
-/* ===== ACESSIBILIDADE ===== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1731,7 +1702,6 @@ body {
   }
 }
 
-/* ===== IMPRESSÃO ===== */
 @media print {
   .post-hero,
   .btn-back,
